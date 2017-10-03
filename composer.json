@@ -1,0 +1,15 @@
+{
+    "name": "104corp/taiwan-bank",
+    "description": "Bank query tool.",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "MilesChou",
+            "email": "jangconan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    }
+}
