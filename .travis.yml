@@ -1,6 +1,5 @@
 sudo: false
 os: linux
-dist: trusty
 language: php
 
 php:
@@ -24,7 +23,9 @@ before_script:
 - composer install --prefer-dist
 
 script:
-- exit 0;
+- php vendor/bin/phpcs
+# TODO: CA invalid
+# - php vendor/bin/phpunit
 
 cache:
   directories:

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ruleset name="Bank coding standard">
+    <description>Bank coding standard</description>
+
+    <!-- display progress and sniff -->
+    <arg value="p"/>
+    <arg value="s"/>
+
+    <!-- use colors in output -->
+    <arg name="colors"/>
+
+    <!-- inherit rules from: -->
+    <rule ref="PSR2"/>
+
+    <!-- specific and just exclude rules in testing files -->
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>_bootstrap.php</exclude-pattern>
+    </rule>
+    <rule ref="PSR2.Methods.MethodDeclaration.Underscore">
+        <exclude-pattern>tests</exclude-pattern>
+    </rule>
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <exclude-pattern>tests/_support</exclude-pattern>
+        <exclude-pattern>_bootstrap.php</exclude-pattern>
+    </rule>
+
+    <!-- Paths and file to check -->
+    <file>app</file>
+    <file>bin</file>
+    <file>src</file>
+    <file>tests</file>
+
+    <!-- exclude file, e.g. Cache -->
+</ruleset>
