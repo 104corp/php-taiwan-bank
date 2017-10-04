@@ -26,7 +26,7 @@ class OpenData extends Resource implements GuzzleClientAwareInterface
         $data = [];
 
         foreach ($content as $item) {
-            $row= str_getcsv($item, ' ');
+            $row = str_getcsv($item, ' ');
 
             // Ignore comment
             if (!isset($row[1])) {
