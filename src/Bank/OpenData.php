@@ -10,13 +10,16 @@ class OpenData extends Resource implements GuzzleClientAwareInterface
 
     protected function fetchData()
     {
-        $client = $this->getHttpClient([
+        $config = [
+            'verify' => getenv('TRAVIS') !== 'true', // Workaround for issue #1 server certificate verification failed
             'headers' => [
                 'User-Agent' => 'Guzzle/Fake',
             ],
-        ]);
+        ];
 
-        $response = $client->get('http://www.banking.gov.tw/ch/ap/bankno_text.jsp');
+        $client = $this->getHttpClient($config);
+
+        $response = $client->get('https://www.banking.gov.tw/ch/ap/bankno_text.jsp');
         $content = (string)$response->getBody();
         $content = explode("\n", $content);
 
