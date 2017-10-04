@@ -33,3 +33,7 @@ nbproject/*
 /vendor
 /composer.lock
 /composer.phar
+
+# PHPUnit
+# see https://stackoverflow.com/a/44764078
+phpunit.xml
