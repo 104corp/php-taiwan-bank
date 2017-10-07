@@ -29,8 +29,9 @@ class OpenData extends Resource implements GuzzleClientAwareInterface
 
         $data = [];
 
-        foreach ($content as $item) {
-            $cols = explode("\t", $item);
+        foreach ($content as $row) {
+            // 總機構代號\t分支機構代號\t機構名稱\t地址\t電話\t負責人\t異動日期\t金融機構網址
+            $cols = explode("\t", $row);
 
             // Ignore comment
             if (!isset($cols[1])) {
