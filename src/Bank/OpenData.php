@@ -19,8 +19,9 @@ class OpenData extends Resource implements GuzzleClientAwareInterface
 
         $client = $this->getHttpClient($config);
 
-        $response = $client->get('https://www.banking.gov.tw/ch/ap/bankno_text.jsp');
+        $response = $client->get('https://www.banking.gov.tw/ch/ap/bankno_excel.jsp');
         $content = (string)$response->getBody();
+        $content = mb_convert_encoding($content, 'UTF-8', 'UTF-16LE');
         $content = explode("\n", $content);
 
         // Ignore title row
@@ -29,14 +30,18 @@ class OpenData extends Resource implements GuzzleClientAwareInterface
         $data = [];
 
         foreach ($content as $item) {
-            $row = str_getcsv($item, ' ');
+            $cols = explode("\t", $item);
 
             // Ignore comment
-            if (!isset($row[1])) {
+            if (!isset($cols[1])) {
                 continue;
             }
 
-            $data[] = $row;
+            $cols = array_map(function ($col) {
+                return substr(trim($col), 2, -1);
+            }, $cols);
+
+            $data[] = $cols;
         }
 
         return $data;
