@@ -1,7 +1,9 @@
 <?php
 namespace Corp104\Taiwan\Bank;
 
-class SmokeTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class SmokeTest extends TestCase
 {
     /**
      * @test
