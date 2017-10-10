@@ -1,7 +1,8 @@
 <?php
 namespace Tests;
 
-use Corp104\Taiwan\Bank\Bank;
+use Corp104\Taiwan\Bank\Factory;
+use Corp104\Taiwan\Bank\BankCollection;
 use PHPUnit\Framework\TestCase;
 
 class SmokeTest extends TestCase
@@ -11,8 +12,8 @@ class SmokeTest extends TestCase
      */
     public function shouldBeOkayWhenSmokeTest()
     {
-        $target = new Bank();
+        $target = Factory::create();
 
-        $this->assertInstanceOf(Bank::class, $target);
+        $this->assertInstanceOf(BankCollection::class, $target);
     }
 }

@@ -1,8 +1,13 @@
 <?php
 namespace Corp104\Taiwan\Bank;
 
-class Bank
+class Branch
 {
+    /**
+     * @var Bank
+     */
+    private $bank;
+
     /**
      * @var string
      */
@@ -24,16 +29,6 @@ class Bank
     private $contact;
 
     /**
-     * @var string
-     */
-    private $url;
-
-    /**
-     * @var array
-     */
-    private $branches = [];
-
-    /**
      * @var bool
      */
     private $isActive;
@@ -42,6 +37,26 @@ class Bank
      * @var string
      */
     private $updatedAt;
+
+    /**
+     * @return Bank
+     */
+    public function getBank()
+    {
+        return $this->bank;
+    }
+
+    /**
+     * @param Bank $bank
+     *
+     * @return $this
+     */
+    public function setBank($bank)
+    {
+        $this->bank = $bank;
+
+        return $this;
+    }
 
     /**
      * @return string
@@ -121,89 +136,6 @@ class Bank
         $this->contact = $contact;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param string $url
-     *
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getBranches()
-    {
-        return $this->branches;
-    }
-
-    /**
-     * @param array $branches
-     *
-     * @return $this
-     */
-    public function setBranches($branches)
-    {
-        $this->branches = $branches;
-
-        return $this;
-    }
-
-    /**
-     * @param string $branchCode
-     *
-     * @return Branch|null
-     */
-    public function getBranch($branchCode)
-    {
-        if (!array_key_exists($branchCode, $this->branches)) {
-            return null;
-        }
-
-        return $this->branches[$branchCode];
-    }
-
-    /**
-     * @param Branch $branch
-     *
-     * @return $this
-     */
-    public function addBranch(Branch $branch)
-    {
-        $this->branches[$branch->getCode()] = $branch;
-
-        return $this;
-    }
-
-    /**
-     * @param string $branchCode
-     *
-     * @return Branch|null
-     */
-    public function removeBranch($branchCode)
-    {
-        if (!array_key_exists($branchCode, $this->branches)) {
-            return null;
-        }
-
-        $removed = $this->branches[$branchCode];
-        unset($this->branches[$branchCode]);
-
-        return $removed;
     }
 
     /**
