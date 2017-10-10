@@ -65,7 +65,7 @@ class Factory
                 ->setContact($contact)
                 ->setIsActive(true)
                 ->setUpdatedAt($row[6]);
-            $bank->addBranch($branch);
+            $bank->getBranches()->add($branch);
         }
 
         return $collection;

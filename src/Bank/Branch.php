@@ -1,7 +1,9 @@
 <?php
 namespace Corp104\Taiwan\Bank;
 
-class Branch
+use Corp104\Taiwan\Bank\Common\Element;
+
+class Branch implements Element
 {
     /**
      * @var Bank

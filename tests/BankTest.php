@@ -2,7 +2,7 @@
 namespace Tests;
 
 use Corp104\Taiwan\Bank\Bank;
-use Corp104\Taiwan\Bank\Branch;
+use Corp104\Taiwan\Bank\BranchCollection;
 use Corp104\Taiwan\Bank\Contact;
 use PHPUnit\Framework\TestCase;
 
@@ -30,70 +30,13 @@ class BankTest extends TestCase
         $this->assertEquals('2017-07-28', $bank->getUpdatedAt());
     }
 
-    /**
-     * @test
-     */
-    public function shouldSetBranches()
+    public function testBranches()
     {
         $target = new Bank();
-        $branch = (new Branch())
-            ->setBank($target)
-            ->setCode('0040037');
+        $branch = new BranchCollection();
 
-        $actual = $target->setBranches([$branch->getCode() => $branch])->getBranches();
-
-        $this->assertContains($branch, $actual);
-        $this->assertCount(1, $actual);
-    }
-
-    public function shouldGetBranch()
-    {
-        $target = new Bank();
-        $branch = (new Branch())
-            ->setBank($target)
-            ->setCode('0040037');
-        $target->addBranch($branch);
-        $actual = $target->getBranch('0040037');
+        $actual = $target->setBranches($branch)->getBranches();
 
         $this->assertEquals($branch, $actual);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldReturnNullWhenGetNotExistsBranch()
-    {
-        $target = new Bank();
-        $actual = $target->getBranch('0040037');
-
-        $this->assertNull($actual);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldRemoveBranch()
-    {
-        $target = new Bank();
-        $branch = (new Branch())
-            ->setBank($target)
-            ->setCode('0040037');
-        $target->addBranch($branch);
-
-        $removed = $target->removeBranch('0040037');
-
-        $this->assertEquals($branch, $removed);
-        $this->assertCount(0, $target->getBranches());
-    }
-
-    /**
-     * @test
-     */
-    public function shouldReturnNullWhenRemoveNotExistsBranch()
-    {
-        $target = new Bank();
-        $actual = $target->removeBranch('0040037');
-
-        $this->assertNull($actual);
     }
 }

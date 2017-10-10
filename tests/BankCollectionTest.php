@@ -1,42 +1,15 @@
 <?php
 namespace Tests;
 
-use Corp104\Taiwan\Bank\BankCollection;
 use Corp104\Taiwan\Bank\Bank;
-use PHPUnit\Framework\TestCase;
+use Corp104\Taiwan\Bank\BankCollection;
+use Tests\Common\CollectionTest;
 
-class BankCollectionTest extends TestCase
+class BankCollectionTest extends CollectionTest
 {
-    /**
-     * @test
-     */
-    public function shouldCountable()
+    protected function buildCollection(array $elements = [])
     {
-        $target = new BankCollection(['004' => new Bank()]);
-
-        $this->assertInstanceOf(\Countable::class, $target);
-        $this->assertCount(1, $target);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldTraversable()
-    {
-        $target = new BankCollection();
-
-        $this->assertInstanceOf(\Traversable::class, $target);
-        $this->assertInstanceOf(\ArrayIterator::class, $target->getIterator());
-    }
-
-    /**
-     * @test
-     */
-    public function shouldReturnNullWhenGetNotExistsBank()
-    {
-        $target = new BankCollection();
-
-        $this->assertNull($target->get('004'));
+        return new BankCollection($elements);
     }
 
     /**
@@ -50,7 +23,7 @@ class BankCollectionTest extends TestCase
         $bank005 = (new Bank())
             ->setCode('005');
 
-        $target = new BankCollection([$bank004->getCode() => $bank004]);
+        $target = $this->buildCollection([$bank004->getCode() => $bank004]);
 
         $this->assertCount(1, $target);
 

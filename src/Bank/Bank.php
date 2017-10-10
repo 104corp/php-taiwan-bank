@@ -1,7 +1,9 @@
 <?php
 namespace Corp104\Taiwan\Bank;
 
-class Bank
+use Corp104\Taiwan\Bank\Common\Element;
+
+class Bank implements Element
 {
     /**
      * @var string
@@ -29,9 +31,9 @@ class Bank
     private $url;
 
     /**
-     * @var array
+     * @var BranchCollection
      */
-    private $branches = [];
+    private $branches;
 
     /**
      * @var bool
@@ -42,6 +44,11 @@ class Bank
      * @var string
      */
     private $updatedAt;
+
+    public function __construct()
+    {
+        $this->branches = new BranchCollection();
+    }
 
     /**
      * @return string
@@ -144,7 +151,7 @@ class Bank
     }
 
     /**
-     * @return array
+     * @return BranchCollection
      */
     public function getBranches()
     {
@@ -152,7 +159,7 @@ class Bank
     }
 
     /**
-     * @param array $branches
+     * @param BranchCollection $branches
      *
      * @return $this
      */
@@ -161,49 +168,6 @@ class Bank
         $this->branches = $branches;
 
         return $this;
-    }
-
-    /**
-     * @param string $branchCode
-     *
-     * @return Branch|null
-     */
-    public function getBranch($branchCode)
-    {
-        if (!array_key_exists($branchCode, $this->branches)) {
-            return null;
-        }
-
-        return $this->branches[$branchCode];
-    }
-
-    /**
-     * @param Branch $branch
-     *
-     * @return $this
-     */
-    public function addBranch(Branch $branch)
-    {
-        $this->branches[$branch->getCode()] = $branch;
-
-        return $this;
-    }
-
-    /**
-     * @param string $branchCode
-     *
-     * @return Branch|null
-     */
-    public function removeBranch($branchCode)
-    {
-        if (!array_key_exists($branchCode, $this->branches)) {
-            return null;
-        }
-
-        $removed = $this->branches[$branchCode];
-        unset($this->branches[$branchCode]);
-
-        return $removed;
     }
 
     /**
