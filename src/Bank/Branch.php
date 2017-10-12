@@ -8,56 +8,56 @@ class Branch implements Element
     /**
      * @var Bank
      */
-    private $bank;
+    public $bank;
 
     /**
      * @var string
      */
-    private $code;
+    public $code;
 
     /**
      * @var string
      */
-    private $name;
+    public $name;
 
     /**
      * @var string
      */
-    private $address;
+    public $address;
 
     /**
      * @var Contact
      */
-    private $contact;
+    public $contact;
 
     /**
      * @var bool
      */
-    private $isActive;
+    public $isActive;
 
     /**
      * @var string
      */
-    private $updatedAt;
-
-    /**
-     * @return Bank
-     */
-    public function getBank()
-    {
-        return $this->bank;
-    }
+    public $updatedAt;
 
     /**
      * @param Bank $bank
-     *
-     * @return $this
+     * @param string $code
+     * @param string $name
+     * @param string $address
+     * @param Contact $contact
+     * @param bool $isActive
+     * @param string $updatedAt
      */
-    public function setBank($bank)
+    public function __construct($bank, $code, $name, $address, $contact, $isActive, $updatedAt)
     {
         $this->bank = $bank;
-
-        return $this;
+        $this->code = $code;
+        $this->name = $name;
+        $this->address = $address;
+        $this->contact = $contact;
+        $this->isActive = $isActive;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
@@ -66,117 +66,5 @@ class Branch implements Element
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * @param string $code
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param string $address
-     *
-     * @return $this
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * @return Contact
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    /**
-     * @param Contact $contact
-     *
-     * @return $this
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param bool $isActive
-     *
-     * @return $this
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param string $updatedAt
-     *
-     * @return $this
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 }

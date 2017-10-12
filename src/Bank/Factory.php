@@ -36,20 +36,20 @@ class Factory
         $collection = new BankCollection();
 
         foreach (static::getDefaultResource()->getData() as $row) {
-            $contact = (new Contact())
-                ->setPhone($row[4])
-                ->setName($row[5]);
+            $contact = new Contact($row[4], $row[5]);
 
             if (empty($row[1])) {
                 // Bank
-                $bank = (new Bank())
-                    ->setCode($row[0])
-                    ->setName($row[2])
-                    ->setAddress($row[6])
-                    ->setContact($contact)
-                    ->setUrl($row[7])
-                    ->setIsActive(true)
-                    ->setUpdatedAt($row[6]);
+                $bank = new Bank(
+                    $row[0],
+                    $row[2],
+                    $row[3],
+                    $contact,
+                    $row[7],
+                    new BranchCollection(),
+                    true,
+                    $row[6]
+                );
                 $collection->add($bank);
 
                 continue;
@@ -57,15 +57,16 @@ class Factory
 
             // Branch
             $bank = $collection->get($row[0]);
-            $branch = (new Branch())
-                ->setBank($bank)
-                ->setCode($row[1])
-                ->setName($row[2])
-                ->setAddress($row[3])
-                ->setContact($contact)
-                ->setIsActive(true)
-                ->setUpdatedAt($row[6]);
-            $bank->getBranches()->add($branch);
+            $branch = new Branch(
+                $bank,
+                $row[1],
+                $row[2],
+                $row[3],
+                $contact,
+                true,
+                $row[6]
+            );
+            $bank->branches->add($branch);
         }
 
         return $collection;

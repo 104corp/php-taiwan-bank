@@ -3,6 +3,8 @@ namespace Tests;
 
 use Corp104\Taiwan\Bank\Bank;
 use Corp104\Taiwan\Bank\BankCollection;
+use Corp104\Taiwan\Bank\Contact;
+use Corp104\Taiwan\Bank\BranchCollection;
 use Tests\Common\CollectionTest;
 
 class BankCollectionTest extends CollectionTest
@@ -18,10 +20,8 @@ class BankCollectionTest extends CollectionTest
      */
     public function shouldIncrementWhenAddBank()
     {
-        $bank004 = (new Bank())
-            ->setCode('004');
-        $bank005 = (new Bank())
-            ->setCode('005');
+        $bank004 = new Bank('004', '', '', new Contact('', ''), '', new BranchCollection(), true, '');
+        $bank005 = new Bank('005', '', '', new Contact('', ''), '', new BranchCollection(), true, '');
 
         $target = $this->buildCollection([$bank004->getCode() => $bank004]);
 

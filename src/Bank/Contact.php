@@ -6,50 +6,20 @@ class Contact
     /**
      * @var string
      */
-    private $name;
+    public $name;
 
     /**
      * @var string
      */
-    private $phone;
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+    public $phone;
 
     /**
      * @param string $name
-     *
-     * @return $this
+     * @param string $phone
      */
-    public function setName($name)
+    public function __construct($name, $phone)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string $phone
-     *
-     * @return $this
-     */
-    public function setPhone($phone)
-    {
         $this->phone = $phone;
-
-        return $this;
     }
 }

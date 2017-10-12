@@ -1,8 +1,10 @@
 <?php
 namespace Tests;
 
+use Corp104\Taiwan\Bank\Bank;
 use Corp104\Taiwan\Bank\Branch;
 use Corp104\Taiwan\Bank\BranchCollection;
+use Corp104\Taiwan\Bank\Contact;
 use Tests\Common\CollectionTest;
 
 class BranchCollectionTest extends CollectionTest
@@ -18,16 +20,16 @@ class BranchCollectionTest extends CollectionTest
      */
     public function shouldIncrementWhenAddBranch()
     {
-        $bank004 = (new Branch())
-            ->setCode('0040037');
-        $bank005 = (new Branch())
-            ->setCode('0040059');
+        $contact = new Contact('', '');
+        $bank = new Bank('004', '', '', $contact, '', new BranchCollection(), true, '');
+        $branch0040037 = new Branch($bank, '0040037', '', '', $contact, true, '');
+        $branch0040059 = new Branch($bank, '0040059', '', '', $contact, true, '');
 
-        $target = $this->buildCollection([$bank004->getCode() => $bank004]);
+        $target = $this->buildCollection([$branch0040037->getCode() => $branch0040037]);
 
         $this->assertCount(1, $target);
 
-        $target->add($bank005);
+        $target->add($branch0040059);
 
         $this->assertCount(2, $target);
 

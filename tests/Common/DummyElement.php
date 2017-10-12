@@ -25,12 +25,4 @@ class DummyElement implements Element
     {
         return $this->code;
     }
-
-    /**
-     * @param string $code
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
 }
