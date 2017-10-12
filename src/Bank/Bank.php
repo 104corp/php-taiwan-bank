@@ -74,4 +74,21 @@ class Bank implements Element
     {
         return $this->code;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'code' => $this->code,
+            'name' => $this->name,
+            'address' => $this->address,
+            'contact' => $this->contact->toArray(),
+            'url' => $this->url,
+            'branches' => $this->branches->toArray(),
+            'isActive' => $this->isActive,
+            'updatedAt' => $this->updatedAt,
+        ];
+    }
 }

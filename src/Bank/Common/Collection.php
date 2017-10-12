@@ -106,4 +106,14 @@ class Collection implements \IteratorAggregate, \Countable
 
         return $removed;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return array_map(function (Element $element) {
+            return $element->toArray();
+        }, $this->elements);
+    }
 }

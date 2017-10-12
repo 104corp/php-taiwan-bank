@@ -120,4 +120,17 @@ class CollectionTest extends TestCase
 
         $this->assertEquals($elements, $collection->all());
     }
+
+    public function testToArray()
+    {
+        $collection = $this->buildCollection($this->buildDummyElements());
+
+        $expected = [
+            'code1' => ['code' => 'code1'],
+            'code2' => ['code' => 'code2'],
+            'code3' => ['code' => 'code3'],
+        ];
+
+        $this->assertEquals($expected, $collection->toArray());
+    }
 }

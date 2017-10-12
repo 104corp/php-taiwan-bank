@@ -22,4 +22,15 @@ class Contact
         $this->name = $name;
         $this->phone = $phone;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'name' => $this->name,
+            'phone' => $this->phone,
+        ];
+    }
 }

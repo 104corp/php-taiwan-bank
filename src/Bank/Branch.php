@@ -67,4 +67,20 @@ class Branch implements Element
     {
         return $this->code;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'bank' => $this->bank->toArray(),
+            'code' => $this->code,
+            'name' => $this->name,
+            'address' => $this->address,
+            'contact' => $this->contact->toArray(),
+            'isActive' => $this->isActive,
+            'updatedAt' => $this->updatedAt,
+        ];
+    }
 }

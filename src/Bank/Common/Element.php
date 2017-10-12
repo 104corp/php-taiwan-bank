@@ -7,4 +7,9 @@ interface Element
      * @return string
      */
     public function getCode();
+
+    /**
+     * @return array
+     */
+    public function toArray();
 }

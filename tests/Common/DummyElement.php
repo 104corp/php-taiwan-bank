@@ -25,4 +25,14 @@ class DummyElement implements Element
     {
         return $this->code;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'code' => $this->code,
+        ];
+    }
 }

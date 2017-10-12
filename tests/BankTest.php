@@ -8,6 +8,9 @@ use PHPUnit\Framework\TestCase;
 
 class BankTest extends TestCase
 {
+    /**
+     * @return Bank
+     */
     public function testConstruct()
     {
         $contact = new Contact('', '02-23493456');
@@ -33,5 +36,30 @@ class BankTest extends TestCase
         $this->assertEquals($branches, $bank->branches);
         $this->assertTrue($bank->isActive);
         $this->assertEquals('2017-07-28', $bank->updatedAt);
+
+        return $bank;
+    }
+
+    /**
+     * @depends testConstruct
+     * @param Bank $bank
+     */
+    public function testToArray(Bank $bank)
+    {
+        $expected = [
+            'code' => '004',
+            'name' => '台灣銀行',
+            'address' => '台北市中正區重慶南路一段120號',
+            'contact' => [
+                'name' => '',
+                'phone' => '02-23493456',
+            ],
+            'url' => 'http://www.bot.com.tw',
+            'branches' => [],
+            'isActive' => true,
+            'updatedAt' => '2017-07-28',
+        ];
+
+        $this->assertEquals($expected, $bank->toArray());
     }
 }
