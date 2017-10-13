@@ -3,8 +3,13 @@ namespace Corp104\Taiwan\Bank;
 
 use Corp104\Taiwan\Bank\Common\Element;
 
-class Bank implements Element
+class Branch implements Element
 {
+    /**
+     * @var Bank
+     */
+    public $bank;
+
     /**
      * @var string
      */
@@ -26,16 +31,6 @@ class Bank implements Element
     public $contact;
 
     /**
-     * @var string
-     */
-    public $url;
-
-    /**
-     * @var BranchCollection
-     */
-    public $branches;
-
-    /**
      * @var bool
      */
     public $isActive;
@@ -46,23 +41,21 @@ class Bank implements Element
     public $updatedAt;
 
     /**
+     * @param Bank $bank
      * @param string $code
      * @param string $name
      * @param string $address
      * @param Contact $contact
-     * @param string $url
-     * @param BranchCollection $branches
      * @param bool $isActive
      * @param string $updatedAt
      */
-    public function __construct($code, $name, $address, $contact, $url, $branches, $isActive, $updatedAt)
+    public function __construct($bank, $code, $name, $address, $contact, $isActive, $updatedAt)
     {
+        $this->bank = $bank;
         $this->code = $code;
         $this->name = $name;
         $this->address = $address;
         $this->contact = $contact;
-        $this->url = $url;
-        $this->branches = $branches;
         $this->isActive = $isActive;
         $this->updatedAt = $updatedAt;
     }
@@ -81,12 +74,11 @@ class Bank implements Element
     public function toArray()
     {
         return [
+            'bank' => $this->bank->toArray(),
             'code' => $this->code,
             'name' => $this->name,
             'address' => $this->address,
             'contact' => $this->contact->toArray(),
-            'url' => $this->url,
-            'branches' => $this->branches->toArray(),
             'isActive' => $this->isActive,
             'updatedAt' => $this->updatedAt,
         ];
