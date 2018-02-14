@@ -7,6 +7,7 @@ php:
 - 5.6
 - 7.0
 - 7.1
+- 7.2
 - nightly
 
 matrix:
@@ -34,3 +35,11 @@ cache:
   # See https://blog.wyrihaximus.net/2015/07/composer-cache-on-travis/
   - $HOME/.composer/cache/files
   - vendor
+
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: always
+    rooms:
+    - secure: dUCY6H+i9U7ILUwxumzue1qw2lOHDZB16gn76p9zHElkT1HgwRXbjsXVpZO/F1TOPxLwfNO4jNpRl8uAQUVglJasvtQCLLoOBOiI1E+yB3qeL7tKpPFFn5Z9oq/5l6XT99bsATx7AKahA4P25qq0HvblWviOENHMoLBkR4/z18TP1xrv9ipU/6rkQPOvvw+cjE/XmD3EHRFghSHiqDRfL4o5E1qHJ300Z4h7BBUqI1oAmmJmE6xVEOg4BDqtZjZ4XXhQRzED1aLK0WPe2h0GNvbSl/y7EcUPKRwVDtFcnSzAf26zMKF9EA9sOFQ0P4MQyU/bkk6UKz5lgJi9lv9OZT1QQvgf8Kn7Nxva1+Lqlh1ar4Gnsa+o2NbyMcgrZiUX3ikSttlyJy1T7RZ4adHIKr09971SUXrEKQaFZNR6UIcLNztdAclSA8uQ5KlGQ+1hsrS732lso2vUOsK9TtWWuDZAwphRDRpe2Uu0u5lTlkP0wAjxiXFNcxKyRtRbLGGAyazWUPZs3+8RDFEtk5Ly7bYsaAzVedDj2uXdrIOaXtTDxGvyrK2OWZgk5ww0rp27O7n5UJWUuHQDmLyGe7miyfBbbrHjS0yvj1upFxsaGBH5LxuJlpD5Nol7VF0pW+eh/2HWpSCJbwxflVlshvGKtdhS/qDEDKBNk9Wz+sHE/r8=
