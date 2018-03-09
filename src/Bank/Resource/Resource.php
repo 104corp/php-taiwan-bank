@@ -1,5 +1,5 @@
 <?php
-namespace Corp104\Taiwan\Bank;
+namespace Corp104\Taiwan\Bank\Resource;
 
 abstract class Resource implements ResourceInterface
 {

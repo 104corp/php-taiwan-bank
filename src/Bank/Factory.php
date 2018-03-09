@@ -1,6 +1,10 @@
 <?php
 namespace Corp104\Taiwan\Bank;
 
+use Corp104\Taiwan\Bank\Resource\OpenDataFromGovernmentBank;
+use Corp104\Taiwan\Bank\Resource\Resource;
+use Corp104\Taiwan\Bank\Resource\ResourceInterface;
+
 class Factory
 {
     /**
@@ -14,7 +18,7 @@ class Factory
     public static function getDefaultResource()
     {
         if (null === static::$defaultResource) {
-            static::$defaultResource = new OpenData();
+            static::$defaultResource = new OpenDataFromGovernmentBank();
         }
 
         return static::$defaultResource;
