@@ -68,7 +68,7 @@ class OpenDataFromFinancialInformationService extends Resource implements Guzzle
 
         $client = $this->getHttpClient($config);
 
-        $response = $client->get('http://www.fisc.com.tw/TC/OPENDATA/Comm1_MEMBER.xml');
+        $response = $client->get('https://www.fisc.com.tw/TC/OPENDATA/Comm1_MEMBER.xml');
         $content = (string)$response->getBody();
         $content = new \SimpleXMLElement($content);
 
