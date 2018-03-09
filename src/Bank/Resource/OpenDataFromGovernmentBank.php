@@ -1,10 +1,10 @@
 <?php
-namespace Corp104\Taiwan\Bank;
+namespace Corp104\Taiwan\Bank\Resource;
 
 use Corp104\Support\GuzzleClientAwareInterface;
 use Corp104\Support\GuzzleClientAwareTrait;
 
-class OpenData extends Resource implements GuzzleClientAwareInterface
+class OpenDataFromGovernmentBank extends Resource implements GuzzleClientAwareInterface
 {
     use GuzzleClientAwareTrait;
 
