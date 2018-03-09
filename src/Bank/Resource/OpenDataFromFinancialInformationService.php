@@ -17,7 +17,7 @@ class OpenDataFromFinancialInformationService extends Resource implements Guzzle
      * 資料來源類型共以下幾種(2018/03/08)
      * TODO 這裡要再想其他方式做分類感覺比較好
      **/
-    static $typeList = [
+    public static $typeList = [
         0 => '跨行自動化服務機器業務(金融卡)',
         1 => '通匯業務-入戶電匯',
         2 => '通匯業務-公庫匯款',
